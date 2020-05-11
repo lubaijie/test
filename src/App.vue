@@ -1,12 +1,18 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" :style="{height: bodyHeight+'px'}">
+    <router-view/>    
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      bodyHeight: window.innerHeight
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -28,5 +34,21 @@
       color: #42b983;
     }
   }
+}
+.main-container{
+  background-color: #ebedf0;
+  height: 100%;
+}
+.default-cell{
+  text-align: initial;
+}
+.van-address-edit__fields {
+  overflow: hidden;
+  border-radius: 0;
+}
+.van-address-edit__default {
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 0;
 }
 </style>
