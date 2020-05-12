@@ -16,3 +16,11 @@ export function addAddress(params) {
     data: params
   })
 }
+
+// 获取当前用户默认收货地址
+export function defaultAddress() {
+  return request({
+    url: '/ums/umsmemberreceiveaddress/default',
+    method: 'get'
+  })
+}

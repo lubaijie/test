@@ -83,6 +83,8 @@
 </template>
 
 <script>
+import { defaultAddress } from '@/api/address'
+
 export default {
   name: 'order',
   data() {
@@ -104,6 +106,16 @@ export default {
           note: ''
         }
       ]
+    }
+  },
+  mounted() {
+    this.getAddress()
+  },
+  methods: {
+    getAddress() {
+      defaultAddress().then(res => {
+        console.log(res)
+      })
     }
   },
 }
