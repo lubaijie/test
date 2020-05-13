@@ -51,4 +51,7 @@ export default {
   overflow: hidden;
   border-radius: 0;
 }
+.van-address-list__bottom{
+  display: none;
+}
 </style>

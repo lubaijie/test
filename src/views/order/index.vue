@@ -10,7 +10,7 @@
       </template>
     </van-nav-bar>
     <!-- 新增收货地址 -->
-    <van-cell class="default-cell" style="margin:46px 0px 15px 0px;" icon="location-o" title="新增收货地址" is-link url="/selectadd" />
+    <van-cell class="default-cell" style="margin:46px 0px 15px 0px;" icon="location-o" :title="address === null ? '新增收货地址' : address.address" is-link url="/selectadd" />
     <!-- 订单 -->
     <div class="order" v-for="(item,index) in orders" :key="index">
       <van-cell class="default-cell" icon="shop-o" :title="item.shop" />
@@ -89,6 +89,7 @@ export default {
   name: 'order',
   data() {
     return {
+      address: this.$store.state.address,
       orders: [
         {
           shop: '亚米商城官方旗舰店',
@@ -110,6 +111,7 @@ export default {
   },
   mounted() {
     this.getAddress()
+    console.log(this.$store.state.address)
   },
   methods: {
     getAddress() {

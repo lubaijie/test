@@ -11,15 +11,11 @@
     </van-nav-bar>
     <!-- 地址列表 -->
     <div v-if="dataList.length === 0" class="address-none">您还没有收货地址</div>
-    <div v-else>
+    <div v-else style="margin-top: 46px;">
       <van-address-list
         v-model="chosenAddressId"
-        :list="list"
-        :disabled-list="disabledList"
-        disabled-text="以下地址超出配送范围"
-        default-tag-text="默认"
-        @add="onAdd"
-        @edit="onEdit"
+        :list="dataList"
+        @select="select"
       />
     </div>
     <!-- 新增收货地址 -->
@@ -33,11 +29,26 @@ export default {
   name: 'SelectAddress',
   data() {
     return {
-      dataList: []
+      dataList: [
+        {
+          id: '1',
+          name: '张三',
+          tel: '13000000000',
+          address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室',
+          isDefault: true,
+        },
+        {
+          id: '2',
+          name: '李四',
+          tel: '1310000000',
+          address: '浙江省杭州市拱墅区莫干山路 50 号',
+        }
+      ],
+      chosenAddressId: ''
     }
   },
   mounted() {
-    this.getData()
+    // this.getData()
   },
   methods: {
     /**
@@ -59,6 +70,13 @@ export default {
       this.$router.push('/addaddress')
     },
     back() {
+      this.$router.push('/')
+    },
+    /**
+     * 选择收货地址
+     */
+    select(item) {
+      this.$store.dispatch('address',item)
       this.$router.push('/')
     }
   }

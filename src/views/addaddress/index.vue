@@ -54,9 +54,10 @@ export default {
       }
       addAddress(data).then(res => {
         if(res.code === 0) {
+          Toast('添加成功')
           this.$router.push('/selectadd')
         } else {
-          Toast(res.msg)
+          Toast(res.data.msg)
         }
       })
     },
